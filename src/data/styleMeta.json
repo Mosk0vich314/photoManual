@@ -1,0 +1,100 @@
+{
+ "_comment": "Curated metadata per style: harmony (from p15 table), chromatic axes, temperature, tone, mood/subject tags for gallery filtering, and representative swatches. Drives gallery chips, swatches and the scene picker.",
+ "styles": {
+  "1":  { "harmony": "Analoga fredda", "harmonyType": "analoga", "axes": "Verde–ciano–blu, umido freddo", "temp": "cold", "tone": "desaturato", "bw": false, "moods": ["malinconico", "naturalistico", "onirico"], "subjects": ["paesaggio", "natura"], "swatches": ["#2e3b3a", "#4f6b63", "#33454f"] },
+  "2":  { "harmony": "Acromatica", "harmonyType": "acromatica", "axes": "Solo luminanza, alto contrasto", "temp": "neutral", "tone": "bn", "bw": true, "moods": ["drammatico", "epico"], "subjects": ["ritratto", "paesaggio"], "swatches": ["#0d0d0d", "#7a7a7a", "#f2f0ea"] },
+  "3":  { "harmony": "Monocromatica", "harmonyType": "monocromatica", "axes": "Un'unica dominante calda seppia", "temp": "warm", "tone": "desaturato", "bw": false, "moods": ["nostalgico", "malinconico"], "subjects": ["paesaggio", "natura"], "swatches": ["#3a2c1d", "#7a5a38", "#c9a878"] },
+  "4":  { "harmony": "Complementare", "harmonyType": "complementare", "axes": "Ciano (190) vs arancio (30)", "temp": "mixed", "tone": "saturo", "bw": false, "moods": ["notturno", "perturbante"], "subjects": ["notte", "interno"], "swatches": ["#0c2a31", "#e8743b", "#0a1418"] },
+  "5":  { "harmony": "Triadica", "harmonyType": "triadica", "axes": "Rosso–giallo–blu su fondo neutro", "temp": "mixed", "tone": "saturo", "bw": false, "moods": ["epico"], "subjects": ["paesaggio"], "swatches": ["#b3271e", "#e0b021", "#274a8a"] },
+  "6":  { "harmony": "Discordante", "harmonyType": "discordante", "axes": "Rosso (350) vs blu-viola (270)", "temp": "mixed", "tone": "saturo", "bw": false, "moods": ["onirico", "perturbante", "drammatico"], "subjects": ["interno", "ritratto"], "swatches": ["#c2142a", "#3a1f6e", "#0c0710"] },
+  "7":  { "harmony": "Complementare", "harmonyType": "complementare", "axes": "Oro (40) vs ciano (200)", "temp": "mixed", "tone": "saturo", "bw": false, "moods": ["drammatico", "epico"], "subjects": ["paesaggio", "natura"], "swatches": ["#b8801f", "#15414d", "#1a0f06"] },
+  "8":  { "harmony": "Complementare spenta", "harmonyType": "complementare", "axes": "Ciano (205) vs ocra (75), rossi uccisi", "temp": "cold", "tone": "desaturato", "bw": false, "moods": ["gotico", "perturbante"], "subjects": ["interno", "ritratto"], "swatches": ["#243b40", "#8f7a45", "#0e1416"] },
+  "9":  { "harmony": "Analoga chiara", "harmonyType": "analoga", "axes": "Verde–giallo pastello, accenti magenta", "temp": "warm", "tone": "pastello", "bw": false, "moods": ["solare", "perturbante", "onirico"], "subjects": ["paesaggio", "natura"], "swatches": ["#c9d18a", "#e8e2c0", "#d98aa6"] },
+  "10": { "harmony": "Complementare sbilanciata", "harmonyType": "complementare", "axes": "Verde-teal dominante, oro come accento", "temp": "mixed", "tone": "saturo", "bw": false, "moods": ["drammatico", "romantico"], "subjects": ["interno", "ritratto"], "swatches": ["#1f4d45", "#2e6b5e", "#c79a3a"] },
+  "11": { "harmony": "Analoga desaturata", "harmonyType": "analoga", "axes": "Grigi verdi-azzurri", "temp": "cold", "tone": "desaturato", "bw": false, "moods": ["clinico", "perturbante", "malinconico"], "subjects": ["interno"], "swatches": ["#4a5552", "#697571", "#3b4543"] },
+  "12": { "harmony": "Complementare calda", "harmonyType": "complementare", "axes": "Ambra (40) vs verde (160), rossi densi", "temp": "warm", "tone": "saturo", "bw": false, "moods": ["romantico", "nostalgico", "intimo"], "subjects": ["interno", "notte"], "swatches": ["#9a5a1f", "#1f5a47", "#7a1f24"] },
+  "13": { "harmony": "Analoga fredda sottile", "harmonyType": "analoga", "axes": "Verde-ciano nelle ombre, incarnato neutro", "temp": "cold", "tone": "standard", "bw": false, "moods": ["clinico"], "subjects": ["ritratto", "interno"], "swatches": ["#26302f", "#465451", "#9aa3a0"] },
+  "14": { "harmony": "Monocromatica calda", "harmonyType": "monocromatica", "axes": "Sabbia/bronzo, solo l'incarnato vive", "temp": "warm", "tone": "desaturato", "bw": false, "moods": ["epico", "intimo"], "subjects": ["ritratto", "paesaggio"], "swatches": ["#4a3520", "#8a6536", "#c79a5e"] },
+  "15": { "harmony": "Complementare delicata", "harmonyType": "complementare", "axes": "Oro (45) vs ombre appena fredde", "temp": "warm", "tone": "standard", "bw": false, "moods": ["nostalgico", "solare", "romantico"], "subjects": ["paesaggio", "natura"], "swatches": ["#c79a3e", "#e0c074", "#2e3a42"] },
+  "16": { "harmony": "Complementare notturna", "harmonyType": "complementare", "axes": "Blu notturno (210–245) vs pelle d'oro", "temp": "mixed", "tone": "standard", "bw": false, "moods": ["notturno", "intimo", "romantico"], "subjects": ["ritratto", "notte"], "swatches": ["#13243f", "#1f3a5e", "#b5793f"] },
+  "17": { "harmony": "Analoga calda satura", "harmonyType": "analoga", "axes": "Verdi densi, acqua grigio-verde opaca", "temp": "warm", "tone": "saturo", "bw": false, "moods": ["solare", "perturbante"], "subjects": ["paesaggio", "natura"], "swatches": ["#3a4a1e", "#5e7a2e", "#4a5546"] },
+  "18": { "harmony": "Complementare naturalistica", "harmonyType": "complementare", "axes": "Foresta blu-ciano vs soggetto ambra", "temp": "cold", "tone": "standard", "bw": false, "moods": ["naturalistico", "drammatico", "epico"], "subjects": ["paesaggio", "natura"], "swatches": ["#1f3a3f", "#3a5a5e", "#b5793f"] },
+  "19": { "harmony": "Palette assegnata", "harmonyType": "palette", "axes": "3–4 pastelli scelti, piatta e simmetrica", "temp": "neutral", "tone": "pastello", "bw": false, "moods": ["nostalgico"], "subjects": ["ritratto", "interno"], "swatches": ["#e8b8c0", "#f0d8a8", "#9ec5c0"] },
+  "20": { "harmony": "Dominante unica", "harmonyType": "monocromatica", "axes": "Rosso assoluto vs incarnato pallido", "temp": "warm", "tone": "saturo", "bw": false, "moods": ["drammatico", "perturbante"], "subjects": ["interno", "ritratto"], "swatches": ["#8a0f12", "#c2231f", "#e8c5b5"] },
+  "21": { "harmony": "Caldo-freddo invertito", "harmonyType": "complementare", "axes": "Mondo ambra brulicante, soggetto freddo", "temp": "mixed", "tone": "saturo", "bw": false, "moods": ["perturbante", "clinico"], "subjects": ["ritratto", "interno"], "swatches": ["#8a5a24", "#b5843a", "#3a4a55"] },
+  "22": { "harmony": "Analoga velata", "harmonyType": "analoga", "axes": "Foschia desaturata, verde-neutro o oro-ocra", "temp": "neutral", "tone": "desaturato", "bw": false, "moods": ["onirico", "malinconico"], "subjects": ["paesaggio", "natura"], "swatches": ["#5a5e50", "#7a7a66", "#9a8a6a"] },
+  "23": { "harmony": "Analoga fredda desaturata", "harmonyType": "analoga", "axes": "Grigio-blu d'altri tempi, incarnato pallido", "temp": "cold", "tone": "desaturato", "bw": false, "moods": ["gotico", "naturalistico", "malinconico"], "subjects": ["paesaggio", "natura"], "swatches": ["#3e474c", "#5e676b", "#aeb2ad"] },
+  "24": { "harmony": "Acromatica ortocromatica", "harmonyType": "acromatica", "axes": "Solo luminanza, pelle annerita, alone e vignetta", "temp": "neutral", "tone": "bn", "bw": true, "moods": ["gotico", "perturbante", "drammatico"], "subjects": ["ritratto", "interno"], "swatches": ["#0a0a0a", "#6e6e6e", "#e8e6df"] }
+ },
+ "sceneGuide": [
+  { "scene": "Ritratto pulito, freddo, professionale", "styles": [13] },
+  { "scene": "Ritratto pulito, caldo, indulgente", "styles": [14] },
+  { "scene": "Ritratto pulito ma straniante", "styles": [21] },
+  { "scene": "Ritratto grafico, simmetrico, colorato", "styles": [19] },
+  { "scene": "Ritratto drammatico, teatrale", "styles": [2, 6] },
+  { "scene": "Volto che risplende nella notte", "styles": [16] },
+  { "scene": "Un solo colore che invade tutto", "styles": [20] },
+  { "scene": "Lago/bosco malinconico e umido (freddo)", "styles": [1] },
+  { "scene": "Scena nebbiosa, dolce e velata", "styles": [22] },
+  { "scene": "Lago estivo, solare, inquietante", "styles": [17] },
+  { "scene": "Natura fredda, invernale, gelida", "styles": [18] },
+  { "scene": "Esterno all'ora dorata", "styles": [15] },
+  { "scene": "Chiaroscuro viscerale, acqua e fuoco", "styles": [7] },
+  { "scene": "Esterno diurno reso perturbante", "styles": [9] },
+  { "scene": "Notte urbana, neon, pioggia", "styles": [4] },
+  { "scene": "Interno istituzionale, vuoto, freddo", "styles": [11] },
+  { "scene": "Interno notturno caldo, intimo", "styles": [12] },
+  { "scene": "Colori primari su fondo neutro", "styles": [5] },
+  { "scene": "Natura fredda e desaturata, luce d'altri tempi", "styles": [23] },
+  { "scene": "B&N claustrofobico, alone e vignetta", "styles": [24] },
+  { "scene": "Atmosfera gotica desaturata, paura del buio", "styles": [8] },
+  { "scene": "Vecchia stampa nostalgica, tono unico", "styles": [3] },
+  { "scene": "Melodramma cromatico, verde e oro", "styles": [10] }
+ ],
+ "filters": {
+  "temp": [
+   { "id": "cold", "label": "Freddo" },
+   { "id": "warm", "label": "Caldo" },
+   { "id": "mixed", "label": "Caldo/Freddo" },
+   { "id": "neutral", "label": "Neutro" }
+  ],
+  "tone": [
+   { "id": "bn", "label": "Bianco e Nero" },
+   { "id": "desaturato", "label": "Desaturato" },
+   { "id": "saturo", "label": "Saturo" },
+   { "id": "pastello", "label": "Pastello" },
+   { "id": "standard", "label": "Standard" }
+  ],
+  "harmonyType": [
+   { "id": "analoga", "label": "Analoga" },
+   { "id": "complementare", "label": "Complementare" },
+   { "id": "monocromatica", "label": "Monocromatica" },
+   { "id": "triadica", "label": "Triadica" },
+   { "id": "discordante", "label": "Discordante" },
+   { "id": "acromatica", "label": "Acromatica" },
+   { "id": "palette", "label": "Palette fissa" }
+  ],
+  "subjects": [
+   { "id": "ritratto", "label": "Ritratto" },
+   { "id": "paesaggio", "label": "Paesaggio" },
+   { "id": "natura", "label": "Natura" },
+   { "id": "interno", "label": "Interno" },
+   { "id": "notte", "label": "Notte" }
+  ],
+  "moods": [
+   { "id": "malinconico", "label": "Malinconico" },
+   { "id": "drammatico", "label": "Drammatico" },
+   { "id": "perturbante", "label": "Perturbante" },
+   { "id": "onirico", "label": "Onirico" },
+   { "id": "romantico", "label": "Romantico" },
+   { "id": "epico", "label": "Epico" },
+   { "id": "clinico", "label": "Clinico" },
+   { "id": "naturalistico", "label": "Naturalistico" },
+   { "id": "notturno", "label": "Notturno" },
+   { "id": "solare", "label": "Solare" },
+   { "id": "gotico", "label": "Gotico" },
+   { "id": "nostalgico", "label": "Nostalgico" },
+   { "id": "intimo", "label": "Intimo" }
+  ]
+ }
+}

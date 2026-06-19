@@ -1,0 +1,2 @@
+# For extract.py (PDF -> src/data/manual.json)
+pymupdf>=1.24

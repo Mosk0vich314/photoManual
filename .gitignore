@@ -1,0 +1,13 @@
+node_modules/
+dist/
+_shots/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
