@@ -42,3 +42,27 @@ npm run extract    # = python extract.py  ->  src/data/manual.json
 
 `shoot.mjs` è un'utilità di verifica: scatta screenshot mobile via `puppeteer-core`
 (usa il Chrome installato) — `node shoot.mjs [route] [nome]`.
+`check_pwa.mjs` verifica che la PWA funzioni offline.
+
+## Installare sul telefono (PWA)
+
+L'app è una PWA: dopo il primo caricamento funziona **offline** (utile sullo shoot).
+Aprila nel browser del telefono → menu → *Aggiungi a schermata Home*.
+
+## Deploy su GitHub Pages
+
+Il repo include un workflow (`.github/workflows/deploy.yml`) che builda e pubblica su Pages
+ad ogni push su `main`. Per attivarlo:
+
+```bash
+# crea il repo remoto e fai push (con GitHub CLI)
+gh repo create photoManual --public --source=. --remote=origin --push
+
+# oppure, senza gh: crea il repo vuoto su github.com, poi
+git remote add origin https://github.com/Mosk0vich314/photoManual.git
+git push -u origin main
+```
+
+Poi su GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+L'URL sarà `https://mosk0vich314.github.io/photoManual/` (la `base` di Vite è `./`,
+quindi funziona anche in una sottocartella).
