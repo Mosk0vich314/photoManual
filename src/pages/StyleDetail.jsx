@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom'
 import { styleBySlug, STYLES, exampleText } from '../data/index.js'
 import Blocks from '../components/Blocks.jsx'
 import Poster from '../components/Poster.jsx'
+import ToneCurve from '../components/ToneCurve.jsx'
+import { CURVES } from '../data/curves.js'
 
 export default function StyleDetail() {
   const { slug } = useParams()
@@ -17,6 +19,7 @@ export default function StyleDetail() {
 
   // skip the leading "example" block (shown in the header) when rendering the body
   const body = s.blocks.filter((b) => b.type !== 'example')
+  const curve = CURVES[s.num]
 
   return (
     <article>
@@ -43,6 +46,13 @@ export default function StyleDetail() {
       </div>
 
       <Blocks blocks={body} />
+
+      {curve && (
+        <section>
+          <h2 className="sec-h">Curva di Viraggio</h2>
+          <ToneCurve points={curve.points} caption={curve.caption} />
+        </section>
+      )}
 
       <div className="pill-nav ui">
         <Link className="prev" to={`/look/${prev.slug}`}>

@@ -1,0 +1,26 @@
+// Curva di Viraggio per stile — coordinate (ingresso, uscita) in unità 0..4,
+// trascritte dai diagrammi TikZ del manuale (\curvadiagram). Stili 3, 4 e 6
+// non hanno un diagramma di curva nel manuale.
+export const CURVES = {
+  1:  { points: [[0, 0.8], [1, 1.15], [2, 1.9], [3, 2.85], [4, 3.75]], caption: 'Curva faded: punto nero sollevato, centro leggermente sotto la diagonale, pendenza ridotta.' },
+  2:  { points: [[0, 0], [1, 0.35], [2, 2], [3, 3.65], [4, 4]], caption: '“S” ripida: neri schiacciati, bianchi spinti, mezzitoni ad altissimo contrasto.' },
+  5:  { points: [[0, 0], [1, 0.55], [2, 2], [3, 3.25], [4, 3.55]], caption: 'Contrasto con “spalla”: la punta in alto a destra è appiattita, le altissime luci non bruciano mai (resa pittorica da pellicola).' },
+  7:  { points: [[0, 0], [1, 0.25], [2, 1.6], [3, 3.1], [4, 4]], caption: 'Low-key: ombre crollate nel nero (lo sfondo sparisce), altissime luci ripide che fanno brillare i riflessi su pelle e acqua.' },
+  8:  { points: [[0, 0], [1, 0.55], [2, 1.7], [3, 3.0], [4, 3.9]], caption: '“S” con mezzitoni abbassati: contrasto presente, ma il centro resta sotto la diagonale (clima cupo e opprimente).' },
+  9:  { points: [[0, 0.9], [1, 1.6], [2, 2.45], [3, 3.2], [4, 3.95]], caption: 'Punto nero molto alto e curva quasi tutta sopra la diagonale: niente neri veri, immagine lattiginosa e luminosa.' },
+  10: { points: [[0, 0.4], [1, 1.1], [2, 2.05], [3, 3.0], [4, 3.9]], caption: 'Faded leggero: punto nero appena sollevato, andamento morbido vicino alla diagonale.' },
+  11: { points: [[0, 0.5], [1, 1.25], [2, 2], [3, 2.75], [4, 3.5]], caption: 'Curva quasi piatta: pendenza ridotta ovunque, niente neri profondi né bianchi puri. Il grigio uniforme è il punto.' },
+  12: { points: [[0, 0.6], [1, 1.25], [2, 2.15], [3, 3.05], [4, 3.8]], caption: 'Neri sollevati (“toe” morbido) e mezzitoni pieni, leggermente sopra la diagonale: look avvolgente, mai duro.' },
+  13: { points: [[0, 0.08], [1, 0.65], [2, 2.0], [3, 3.15], [4, 3.6]], caption: '“S” contenuta con punto bianco abbassato: neri pieni ma leggibili, alte luci che non raggiungono mai il bianco puro.' },
+  14: { points: [[0, 0.15], [1, 0.85], [2, 1.95], [3, 2.9], [4, 3.4]], caption: 'Spalla morbidissima: le alte luci si spengono gradualmente molto sotto il bianco puro. È il rolloff “da pellicola”.' },
+  15: { points: [[0, 0.5], [1, 1.3], [2, 2.2], [3, 3.1], [4, 3.85]], caption: 'Curva dolce e sollevata: ombre aperte dal controluce, niente neri profondi, tutto respira.' },
+  16: { points: [[0, 0.05], [1, 0.6], [2, 1.95], [3, 3.15], [4, 3.9]], caption: '“S” moderata con neri pieni: la notte è densa, ma i riflessi sulla pelle restano brillanti.' },
+  17: { points: [[0, 0], [1, 0.6], [2, 1.95], [3, 3.2], [4, 3.85]], caption: '“S” decisa con neri pieni: contrasto solare, niente delicatezza. L’estate ha luce dura e ombre nette.' },
+  18: { points: [[0, 0], [1, 0.55], [2, 1.75], [3, 3.05], [4, 3.85]], caption: '“S” con mezzitoni abbassati: il mondo freddo resta cupo, ma neri e bianchi (neve) restano pieni.' },
+  19: { points: [[0, 0.55], [1, 1.3], [2, 2.1], [3, 2.9], [4, 3.6]], caption: 'Curva piatta e sollevata: niente contrasto drammatico, l’immagine è uniforme e “stampata”.' },
+  20: { points: [[0, 0], [1, 0.55], [2, 1.9], [3, 3.1], [4, 3.8]], caption: '“S” con luci trattenute: il rosso ha neri profondi, il volto resta pallido ma non brucia.' },
+  21: { points: [[0, 0.1], [1, 0.7], [2, 2.0], [3, 3.2], [4, 3.7]], caption: '“S” contenuta: definizione precisa e gamma controllata, ma niente teatro.' },
+  22: { points: [[0, 0.7], [1, 1.4], [2, 2.25], [3, 3.1], [4, 3.8]], caption: 'Curva sollevata e ariosa: la foschia alza i neri e comprime il contrasto, l’immagine respira luce.' },
+  23: { points: [[0, 0.1], [1, 0.8], [2, 1.85], [3, 2.8], [4, 3.45]], caption: 'Curva morbida coi bianchi trattenuti: neri presenti ma non schiacciati, cielo coperto che non brucia.' },
+  24: { points: [[0, 0], [1, 0.25], [2, 1.8], [3, 3.6], [4, 4]], caption: '“S” estrema: neri schiacciati e alte luci che bruciano. Il bianco non è pulito, fiorisce.' },
+}

@@ -15,8 +15,11 @@ function Para({ runs }) {
   )
 }
 
+// normalize curly apostrophes/quotes so widget keys can use straight ones
+const normKey = (s) => (s || '').replace(/[‘’ʼ′]/g, "'")
+
 // Render a list of blocks. `widgets` lets a page inject extra nodes after a
-// given heading text (used for the color wheel / scene picker).
+// given heading text (used for the color wheel, schematics, scene picker).
 export default function Blocks({ blocks, widgets }) {
   const out = []
   blocks.forEach((b, i) => {
@@ -39,7 +42,10 @@ export default function Blocks({ blocks, widgets }) {
     } else if (b.type === 'scheda') {
       out.push(<SchedaRapida rows={b.rows} key={i} />)
     }
-    if (widgets && widgets[b.text]) out.push(<React.Fragment key={'w' + i}>{widgets[b.text]}</React.Fragment>)
+    if (b.type === 'heading' && widgets) {
+      const w = widgets[b.text] || widgets[normKey(b.text)]
+      if (w) out.push(<React.Fragment key={'w' + i}>{w}</React.Fragment>)
+    }
   })
   return <div className="prose">{out}</div>
 }
