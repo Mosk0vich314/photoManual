@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // ---- curve math -----------------------------------------------------------
 // Monotone cubic (Fritsch–Carlson) interpolation -> 256-entry lookup table.
@@ -118,7 +118,8 @@ export default function CurvePlayground() {
   const svgRef = useRef(null)
   const [channel, setChannel] = useState('rgb')
   const [pts, setPts] = useState({ rgb: LINEAR, r: LINEAR, g: LINEAR, b: LINEAR })
-  const [drag, setDrag] = useState(null) // index into current channel's points
+  const [sel, setSel] = useState(null)        // selected point index (current channel)
+  const [dragging, setDragging] = useState(false)
   const [ready, setReady] = useState(false)
 
   // build the source scene once
@@ -147,66 +148,90 @@ export default function CurvePlayground() {
     canvasRef.current.getContext('2d').putImageData(outRef.current, 0, 0)
   }, [pts, ready])
 
-  // ---- pointer -> svg data coords ----
-  const toData = useCallback((e) => {
+  const mapX = (v) => PAD.l + (v / 255) * S
+  const mapY = (v) => PAD.t + (1 - v / 255) * S
+  const cur = CHANNELS.find((c) => c.id === channel)
+  const lut = buildLUT(pts[channel])
+
+  // ---- pointer geometry (in viewBox units; the svg scales uniformly) ----
+  const GRAB = 18  // tap within this of a point => grab it (not add)
+  const ADD = 12   // tap within this of the curve line => add a point
+  const eventToView = (e) => {
     const rect = svgRef.current.getBoundingClientRect()
-    const sx = ((e.clientX - rect.left) / rect.width) * VW
-    const sy = ((e.clientY - rect.top) / rect.height) * VH
-    return [
-      clamp(((sx - PAD.l) / S) * 255, 0, 255),
-      clamp((1 - (sy - PAD.t) / S) * 255, 0, 255),
-    ]
-  }, [])
+    return [((e.clientX - rect.left) / rect.width) * VW, ((e.clientY - rect.top) / rect.height) * VH]
+  }
+  const viewToData = ([vx, vy]) => [
+    clamp(((vx - PAD.l) / S) * 255, 0, 255),
+    clamp((1 - (vy - PAD.t) / S) * 255, 0, 255),
+  ]
 
   const setChannelPts = (next) => setPts((p) => ({ ...p, [channel]: next }))
 
-  // dragging via window listeners (robust across the whole gesture)
+  // drive an active drag through window listeners (robust across the gesture)
   useEffect(() => {
-    if (drag == null) return
+    if (!dragging || sel == null) return
     const onMove = (e) => {
       e.preventDefault()
-      const [dx, dy] = toData(e)
+      const [dx, dy] = viewToData(eventToView(e))
       setPts((p) => {
         const arr = p[channel].map((q) => [...q])
         const last = arr.length - 1
-        if (drag === 0) arr[0] = [0, Math.round(dy)]
-        else if (drag === last) arr[last] = [255, Math.round(dy)]
+        if (sel === 0) arr[0] = [0, Math.round(dy)]
+        else if (sel === last) arr[last] = [255, Math.round(dy)]
         else {
-          const lo = arr[drag - 1][0] + 3, hi = arr[drag + 1][0] - 3
-          arr[drag] = [Math.round(clamp(dx, lo, hi)), Math.round(dy)]
+          const lo = arr[sel - 1][0] + 3, hi = arr[sel + 1][0] - 3
+          arr[sel] = [Math.round(clamp(dx, lo, hi)), Math.round(dy)]
         }
         return { ...p, [channel]: arr }
       })
     }
-    const onUp = () => setDrag(null)
+    const onUp = () => setDragging(false)
     window.addEventListener('pointermove', onMove, { passive: false })
     window.addEventListener('pointerup', onUp)
     return () => {
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('pointerup', onUp)
     }
-  }, [drag, channel, toData])
+  }, [dragging, sel, channel])
 
-  // tap empty area -> insert a point there and grab it
-  const onBgDown = (e) => {
-    const [dx, dy] = toData(e)
-    const arr = pts[channel].map((q) => [...q])
-    let idx = arr.findIndex((q) => q[0] > dx)
-    if (idx <= 0) idx = arr.length - 1
-    arr.splice(idx, 0, [Math.round(clamp(dx, arr[idx - 1][0] + 3, arr[idx][0] - 3)), Math.round(dy)])
-    setChannelPts(arr)
-    setDrag(idx)
-  }
-  const removePoint = (i) => {
+  // single entry point: grab the nearest point, else add one ONLY if the tap
+  // lands on the curve, else just deselect. No more stray points.
+  const onPointerDown = (e) => {
+    const view = eventToView(e)
     const arr = pts[channel]
-    if (i === 0 || i === arr.length - 1) return
-    setChannelPts(arr.filter((_, j) => j !== i))
+    let best = -1, bestD = Infinity
+    arr.forEach((p, i) => {
+      const d = Math.hypot(mapX(p[0]) - view[0], mapY(p[1]) - view[1])
+      if (d < bestD) { bestD = d; best = i }
+    })
+    if (bestD <= GRAB) { setSel(best); setDragging(true); return }
+
+    const [dx, dy] = viewToData(view)
+    const onCurve = Math.abs(view[1] - mapY(lut[clamp(Math.round(dx), 0, 255)])) <= ADD
+    if (onCurve) {
+      const a = arr.map((q) => [...q])
+      let idx = a.findIndex((q) => q[0] > dx)
+      if (idx <= 0) idx = a.length - 1
+      idx = clamp(idx, 1, a.length - 1)
+      a.splice(idx, 0, [Math.round(clamp(dx, a[idx - 1][0] + 3, a[idx][0] - 3)), Math.round(dy)])
+      setChannelPts(a)
+      setSel(idx)
+      setDragging(true)
+      return
+    }
+    setSel(null)
   }
 
-  const cur = CHANNELS.find((c) => c.id === channel)
-  const lut = buildLUT(pts[channel])
-  const mapX = (v) => PAD.l + (v / 255) * S
-  const mapY = (v) => PAD.t + (1 - v / 255) * S
+  const pickChannel = (id) => { setChannel(id); setSel(null) }
+  const applyPreset = (name) => { setPts({ ...PRESETS[name] }); setSel(null) }
+  const lastIdx = pts[channel].length - 1
+  const canRemove = sel != null && sel !== 0 && sel !== lastIdx
+  const removeSelected = () => {
+    if (!canRemove) return
+    setChannelPts(pts[channel].filter((_, j) => j !== sel))
+    setSel(null)
+  }
+
   let path = `M ${mapX(0)} ${mapY(lut[0])}`
   for (let x = 4; x <= 255; x += 4) path += ` L ${mapX(x)} ${mapY(lut[x])}`
 
@@ -220,7 +245,7 @@ export default function CurvePlayground() {
             key={c.id}
             className={'tab' + (channel === c.id ? ' on' : '')}
             style={channel === c.id ? { borderColor: c.color, color: c.color } : undefined}
-            onClick={() => setChannel(c.id)}
+            onClick={() => pickChannel(c.id)}
           >
             {c.label}
           </button>
@@ -231,7 +256,7 @@ export default function CurvePlayground() {
         ref={svgRef}
         viewBox={`0 0 ${VW} ${VH}`}
         className="curve-svg"
-        onPointerDown={onBgDown}
+        onPointerDown={onPointerDown}
       >
         <rect x={PAD.l} y={PAD.t} width={S} height={S} fill="none" stroke="var(--line)" strokeWidth="1.2" />
         {[1, 2, 3].map((i) => (
@@ -244,26 +269,37 @@ export default function CurvePlayground() {
           stroke="var(--text-3)" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
         <path d={path} fill="none" stroke={cur.color} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
         {pts[channel].map((p, i) => (
-          <circle
-            key={i}
-            cx={mapX(p[0])} cy={mapY(p[1])} r="6.5"
-            fill={cur.color} stroke="#0b0c0f" strokeWidth="1.5"
-            style={{ cursor: 'grab' }}
-            onPointerDown={(e) => { e.stopPropagation(); setDrag(i) }}
-            onDoubleClick={(e) => { e.stopPropagation(); removePoint(i) }}
-          />
+          <g key={i}>
+            {sel === i && (
+              <circle cx={mapX(p[0])} cy={mapY(p[1])} r="11" fill="none" stroke={cur.color} strokeWidth="1.5" opacity="0.6" />
+            )}
+            <circle
+              cx={mapX(p[0])} cy={mapY(p[1])} r="6.5"
+              fill={cur.color} stroke="#0b0c0f" strokeWidth="1.5"
+            />
+          </g>
         ))}
       </svg>
 
+      <div className="curve-actions">
+        <button className="pbtn danger" onClick={removeSelected} disabled={!canRemove}>
+          ✕ Rimuovi punto
+        </button>
+      </div>
+
       <div className="curve-presets">
         {Object.keys(PRESETS).map((name) => (
-          <button key={name} className="pbtn" onClick={() => setPts({ ...PRESETS[name] })}>
+          <button key={name} className="pbtn" onClick={() => applyPreset(name)}>
             {name}
           </button>
         ))}
       </div>
 
-      <p className="curve-hint">{RULE[channel]}</p>
+      <p className="curve-hint">
+        Tocca un punto per selezionarlo e trascinalo. Tocca <i>sulla curva</i> per aggiungerne uno;
+        «Rimuovi punto» per toglierlo.
+      </p>
+      <p className="curve-hint" style={{ marginTop: 2 }}>{RULE[channel]}</p>
     </div>
   )
 }

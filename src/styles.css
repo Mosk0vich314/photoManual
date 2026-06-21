@@ -236,7 +236,12 @@ h1.page { overflow-wrap: anywhere; }
   touch-action: none; user-select: none; -webkit-user-select: none;
 }
 .curve-svg circle { touch-action: none; }
-.curve-presets { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 12px 0 4px; }
+.curve-actions { display: flex; justify-content: center; margin: 12px 0 2px; }
+.curve-actions .pbtn.danger { color: #e0786f; border-color: rgba(224,120,111,0.4); }
+.curve-actions .pbtn.danger:disabled {
+  color: var(--text-3); border-color: var(--line); opacity: 0.5; cursor: default;
+}
+.curve-presets { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 10px 0 4px; }
 .curve-presets .pbtn {
   font: inherit; font-size: 12.5px; padding: 6px 13px; border-radius: 999px;
   border: 1px solid var(--line); background: var(--bg-2); color: var(--text-2);
