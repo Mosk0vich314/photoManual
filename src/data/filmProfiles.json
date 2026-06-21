@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "Profili Film",
+    "subtitle": "Sei emulazioni di pellicola in profilo Lightroom",
+    "maker": "RNI Films 5",
+    "note": "Sono profili, non preset: si applicano dal browser Profili (con cursore Quantità) e lasciano liberi i cursori di sviluppo. La risposta della pellicola è incisa nel profilo stesso; le regolazioni qui sotto sono i pochi ritocchi di base inclusi."
+  },
+  "profiles": [
+    {
+      "id": 1,
+      "slug": "kodak-portra-400",
+      "name": "Kodak Portra 400",
+      "category": "Negativo",
+      "categoryKey": "negative",
+      "badge": "NEG",
+      "tagline": "Il negativo dei ritratti",
+      "description": "Negativo a colori professionale, amatissimo per gli incarnati caldi e naturali, il basso contrasto e la gamma tonale morbida. Latitudine generosa e grana fine: una resa indulgente, ideale per ritratti e luce naturale.",
+      "character": ["Incarnati caldi", "Basso contrasto", "Grana fine"],
+      "swatches": ["#e7c4a0", "#c98f6a", "#9aa382", "#3a3026"],
+      "settings": [
+        { "label": "Alte luci", "value": "−10" },
+        { "label": "Ombre", "value": "+10" }
+      ],
+      "curve": [[0, 0], [130, 129], [255, 233]]
+    },
+    {
+      "id": 2,
+      "slug": "kodak-e-200",
+      "name": "Kodak E 200",
+      "category": "Diapositiva",
+      "categoryKey": "slide",
+      "badge": "DIA",
+      "tagline": "La diapositiva brillante",
+      "description": "Diapositiva invertibile (processo E-6) dai colori puliti e saturi e dal contrasto deciso. Blu e ciani brillanti, neri pieni: la resa “slide” viva e tridimensionale, con poca latitudine ma grande impatto.",
+      "character": ["Colori saturi", "Contrasto deciso", "Blu brillanti"],
+      "swatches": ["#1f7d9a", "#e3a72b", "#bf3b2c", "#15222b"],
+      "settings": [],
+      "curve": null
+    },
+    {
+      "id": 3,
+      "slug": "polaroid-690-muted",
+      "name": "Polaroid 690 muted",
+      "category": "Istantanea",
+      "categoryKey": "instant",
+      "badge": "IST",
+      "tagline": "L'istantanea smorzata",
+      "description": "Emulazione di istantanea dai colori smorzati e pastello, con contrasto morbido e leggere dominanti fredde nei mezzitoni. Il look nostalgico della Polaroid, attenuato e delicato.",
+      "character": ["Toni smorzati", "Pastello", "Contrasto morbido"],
+      "swatches": ["#cabfa9", "#9aa79a", "#d7c2a2", "#574f44"],
+      "settings": [
+        { "label": "Saturazione", "value": "−5" },
+        { "label": "Vividezza", "value": "−10" },
+        { "label": "Alte luci", "value": "−20" },
+        { "label": "Ombre", "value": "+10" }
+      ],
+      "curve": [[0, 0], [128, 128], [255, 251]]
+    },
+    {
+      "id": 4,
+      "slug": "agfacolor-40s",
+      "name": "Agfacolor 40s",
+      "category": "Vintage",
+      "categoryKey": "vintage",
+      "badge": "VTG",
+      "tagline": "Il colore d'epoca",
+      "description": "Emulazione del colore Agfa degli anni '40: palette calda e desaturata, virata verso l'ambra e atmosfera d'epoca. Restituisce alle immagini il sapore della prima fotografia a colori.",
+      "character": ["Caldo desaturato", "Virata ambra", "Atmosfera d'epoca"],
+      "swatches": ["#c2a06a", "#8a724c", "#d8bd86", "#352a1d"],
+      "settings": [],
+      "curve": null
+    },
+    {
+      "id": 5,
+      "slug": "ilford-delta-100",
+      "name": "Ilford Delta 100",
+      "category": "Bianco e Nero",
+      "categoryKey": "bw",
+      "badge": "B/N",
+      "tagline": "Il bianco e nero a grana fine",
+      "description": "Pellicola bianco e nero a grana finissima (ISO 100), con tonalità ricche, ampia scala di grigi e neri profondi. Nitidezza elevata e mezzitoni puliti: il riferimento classico del B/N.",
+      "character": ["Grana finissima", "Neri profondi", "Alta nitidezza"],
+      "swatches": ["#ededed", "#9a9a9a", "#4f4f4f", "#141414"],
+      "settings": [
+        { "label": "Saturazione", "value": "−100 (monocromatico)" },
+        { "label": "Contrasto", "value": "+20" },
+        { "label": "Alte luci", "value": "−30" },
+        { "label": "Curva (param.)", "value": "Scuri +30 · Chiari +20 · Ombre −15" }
+      ],
+      "curve": [[0, 0], [128, 125], [255, 235]]
+    },
+    {
+      "id": 6,
+      "slug": "aerochrome-16",
+      "name": "Aerochrome 16",
+      "category": "Infrarosso",
+      "categoryKey": "infrared",
+      "badge": "IR",
+      "tagline": "I falsi colori dell'infrarosso",
+      "description": "Emulazione della pellicola a falsi colori sensibile all'infrarosso: il fogliame verde vira al rosso e al magenta, i cieli si fanno cupi. Un effetto onirico e surreale, pensato per paesaggi e vegetazione.",
+      "character": ["Falsi colori", "Fogliame magenta", "Surreale"],
+      "swatches": ["#e8497f", "#b51f55", "#f2b3c4", "#26243a"],
+      "settings": [
+        { "label": "Alte luci", "value": "−30" }
+      ],
+      "curve": null
+    }
+  ]
+}

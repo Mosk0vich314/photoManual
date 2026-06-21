@@ -1,8 +1,14 @@
 import manual from './manual.json'
 import meta from './styleMeta.json'
+import filmProfiles from './filmProfiles.json'
 
 export const META = manual.meta
 export const CHAPTERS = manual.chapters
+
+// Film profiles ("Profili Film") — Lightroom *profiles*, distinct from the 24 looks
+export const PROFILES_META = filmProfiles.meta
+export const PROFILES = filmProfiles.profiles
+export const profileBySlug = (slug) => PROFILES.find((p) => p.slug === slug)
 
 export const STYLE_META = meta.styles
 export const SCENE_GUIDE = meta.sceneGuide

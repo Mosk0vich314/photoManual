@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { Routes, Route, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { styleBySlug, chapterBySlug } from './data/index.js'
+import { styleBySlug, chapterBySlug, profileBySlug } from './data/index.js'
 
 import Home from './pages/Home.jsx'
 import Looks from './pages/Looks.jsx'
 import StyleDetail from './pages/StyleDetail.jsx'
+import Profili from './pages/Profili.jsx'
+import ProfileDetail from './pages/ProfileDetail.jsx'
 import Manuale from './pages/Manuale.jsx'
 import ChapterReader from './pages/ChapterReader.jsx'
 import Picker from './pages/Picker.jsx'
@@ -25,12 +27,17 @@ function topbarTitle(pathname) {
     const s = styleBySlug(parts[1])
     return s ? { sub: `Stile ${s.num}`, title: s.title } : { title: 'Look' }
   }
+  if (parts[0] === 'profili' && parts[1]) {
+    const p = profileBySlug(parts[1])
+    return p ? { sub: p.category, title: p.name } : { title: 'Profilo' }
+  }
   if (parts[0] === 'capitolo' && parts[1]) {
     const c = chapterBySlug(parts[1])
     return c ? { sub: 'Manuale', title: c.title } : { title: 'Capitolo' }
   }
   switch (pathname) {
     case '/look': return { sub: 'Galleria', title: 'I 24 Look' }
+    case '/profili': return { sub: 'Galleria', title: 'Profili Film' }
     case '/scena': return { sub: 'Guida', title: 'Quale look per la scena?' }
     case '/manuale': return { sub: 'Indice', title: 'Il Manuale' }
     case '/cerca': return { sub: '', title: 'Cerca' }
@@ -98,6 +105,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/look" element={<Looks />} />
           <Route path="/look/:slug" element={<StyleDetail />} />
+          <Route path="/profili" element={<Profili />} />
+          <Route path="/profili/:slug" element={<ProfileDetail />} />
           <Route path="/scena" element={<Picker />} />
           <Route path="/manuale" element={<Manuale />} />
           <Route path="/capitolo/:slug" element={<ChapterReader />} />

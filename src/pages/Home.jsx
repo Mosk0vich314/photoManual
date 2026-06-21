@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { STYLES, META } from '../data/index.js'
+import { STYLES, META, PROFILES } from '../data/index.js'
 import Poster from '../components/Poster.jsx'
 
 const TILES = [
@@ -34,6 +34,22 @@ export default function Home() {
             </div>
           </Link>
         ))}
+
+        <Link className="tile span2" to="/profili">
+          <div className="profile-stack" aria-hidden="true">
+            {PROFILES.slice(0, 4).map((p) => (
+              <Poster key={p.id} colors={p.swatches} angle={150}
+                style={{ width: 40, height: 52, borderRadius: 7, flex: '0 0 auto', border: '1px solid var(--line)' }} />
+            ))}
+          </div>
+          <div>
+            <div className="t-sub" style={{ letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+              Profili Film
+            </div>
+            <div className="t-name" style={{ fontSize: 18, marginTop: 2 }}>Emulazioni di pellicola</div>
+            <div className="t-sub">{PROFILES.length} profili Lightroom · RNI Films 5</div>
+          </div>
+        </Link>
 
         <Link className="tile span2 gold" to={`/look/${featured.slug}`}>
           <Poster colors={sw} angle={150} style={{ width: 64, height: 64, borderRadius: 12, flex: '0 0 auto', border: '1px solid var(--line)' }} />

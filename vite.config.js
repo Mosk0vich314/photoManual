@@ -12,7 +12,9 @@ export default defineConfig({
       includeAssets: ['apple-touch-icon.png', 'icon-192.png', 'icon-512.png'],
       workbox: {
         // precache the whole static app so it works fully offline on a shoot
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,xmp}'],
+        // the .xmp profiles are ~230 KB each; lift the default 2 MiB cap
+        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
       },
       manifest: {
