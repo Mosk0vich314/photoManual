@@ -1,0 +1,135 @@
+{
+  "_comment": "Hand-authored chapters NOT present in Photo_Manual.pdf. Merged into CHAPTERS by src/data/index.js (insertAfter = slug to follow). Same block model as manual.json.",
+  "chapters": [
+    {
+      "id": 600,
+      "slug": "le-curve-di-colore",
+      "kind": "theory",
+      "num": null,
+      "title": "Le Curve di Colore (RGB)",
+      "page": null,
+      "insertAfter": "teoria-del-colore",
+      "blocks": [
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Le curve sono lo strumento che trasforma l'editing da ", "k": "text" },
+            { "t": "applicare look", "k": "emph" },
+            { "t": " a ", "k": "text" },
+            { "t": "costruirli", "k": "emph" },
+            { "t": ". Una volta che il loro funzionamento è chiaro, preset e profili film smettono di essere magia: diventano cose che sai leggere e modificare. Questo capitolo riprende la curva di luminanza già usata nelle ricette e introduce il vero motore del color grading — le curve di canale.", "k": "text" }
+          ]
+        },
+        { "type": "heading", "text": "Come si legge una curva" },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Una curva è un grafico che dice: ", "k": "text" },
+            { "t": "prendi la luminosità che ho ora e restituiscine un'altra al suo posto", "k": "emph" },
+            { "t": ". L'asse ", "k": "text" },
+            { "t": "orizzontale", "k": "label" },
+            { "t": " è l'ingresso — a sinistra i neri, poi ombre, mezzitoni, luci, a destra i bianchi. L'asse ", "k": "text" },
+            { "t": "verticale", "k": "label" },
+            { "t": " è l'uscita: in alto schiarisce, in basso scurisce. La diagonale retta significa «non cambiare nulla»: ingresso uguale a uscita.", "k": "text" }
+          ]
+        },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Modificare è quindi solo questo: afferri un punto sulla diagonale e lo ", "k": "text" },
+            { "t": "trascini in alto per schiarire", "k": "label" },
+            { "t": " quella fascia tonale, ", "k": "text" },
+            { "t": "in basso per scurirla", "k": "label" },
+            { "t": ". Un punto agisce solo sulle luminosità vicine: la curva si piega lì e torna dolcemente sulla diagonale. È questa località il vero trucco.", "k": "text" }
+          ]
+        },
+        { "type": "heading", "text": "La curva di luminanza" },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Sul canale composito (RGB) la curva agisce solo sulla luminosità. Tre mosse coprono quasi tutto:", "k": "text" }
+          ]
+        },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Curva a S", "k": "label" },
+            { "t": " = contrasto: abbassi un punto nelle ombre e ne alzi uno nelle luci. Scuri più scuri, chiari più chiari, immagine con più nerbo. ", "k": "text" },
+            { "t": "Neri sollevati", "k": "label" },
+            { "t": " = look sbiadito: alzi l'estremo in basso a sinistra e i neri diventano grigio scuro — la matrice di metà delle emulazioni film che possiedi. ", "k": "text" },
+            { "t": "Spalla in alto", "k": "label" },
+            { "t": ": abbassi l'estremo in alto a destra per addolcire le luci, molto «negativo». Vedi anche la ", "k": "text" },
+            { "t": "Curva di Viraggio", "k": "emph" },
+            { "t": " nelle singole ricette.", "k": "text" }
+          ]
+        },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Regola d'oro: aggiungi prima un punto al centro per fissare l'esposizione dei mezzitoni, ", "k": "text" },
+            { "t": "poi", "k": "emph" },
+            { "t": " muovi gli estremi — altrimenti sposti la luminosità di tutta l'immagine.", "k": "text" }
+          ]
+        },
+        { "type": "heading", "text": "Le curve di canale: il vero color grading" },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Sposta la curva dal composito al singolo canale ", "k": "text" },
+            { "t": "Rosso", "k": "label" },
+            { "t": ", ", "k": "text" },
+            { "t": "Verde", "k": "label" },
+            { "t": " o ", "k": "text" },
+            { "t": "Blu", "k": "label" },
+            { "t": ". Ora su e giù aggiungono o tolgono colore, con una regola che apre ogni porta: alzare aggiunge quel colore, abbassare aggiunge il suo complementare.", "k": "text" }
+          ]
+        },
+        {
+          "type": "scheda",
+          "rows": [
+            { "label": "Canale Rosso", "value": "su → rosso / caldo  ·  giù → ciano" },
+            { "label": "Canale Verde", "value": "su → verde  ·  giù → magenta" },
+            { "label": "Canale Blu", "value": "su → blu / freddo  ·  giù → giallo / caldo" }
+          ]
+        },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Poiché l'estremo delle ombre e quello delle luci di ciascun canale si muovono in modo ", "k": "text" },
+            { "t": "indipendente", "k": "label" },
+            { "t": ", puoi mettere un colore nelle ombre e un colore diverso nelle luci. È esattamente questo il significato di «color grading».", "k": "text" }
+          ]
+        },
+        { "type": "heading", "text": "Ricetta: teal & orange" },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Sul canale ", "k": "text" },
+            { "t": "Blu", "k": "label" },
+            { "t": " solleva il punto in basso (ombre fredde, teal) e abbassa quello in alto (luci verso il giallo, calde). Aggiungi un tocco di ", "k": "text" },
+            { "t": "Rosso", "k": "label" },
+            { "t": " nelle luci per l'oro sugli incarnati. Una sola coppia di canali e hai ombre teal con pelle calda — la spina dorsale del look cinematografico.", "k": "text" }
+          ]
+        },
+        { "type": "heading", "text": "Il banco di prova" },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Trascina i punti, cambia canale, prova i preset e guarda l'immagine reagire in tempo reale. Tocca la curva per aggiungere un punto, doppio tocco per rimuoverlo.", "k": "text" }
+          ]
+        },
+        { "type": "heading", "text": "Come allenarsi" },
+        {
+          "type": "para",
+          "runs": [
+            { "t": "Apri una foto già sviluppata con uno dei tuoi ", "k": "text" },
+            { "t": "profili film", "k": "label" },
+            { "t": " e prova a ricostruirne le mosse con le curve: è il miglior insegnante che hai. Tieni l'", "k": "text" },
+            { "t": "istogramma", "k": "label" },
+            { "t": " visibile dietro la curva, così sai dove vivono i pixel. Esagera una mossa fino a renderla brutta per capirne la direzione, poi torna indietro al venti per cento. E lavora sempre in quest'ordine: prima la curva master per contrasto e neri, poi un canale alla volta per il colore.", "k": "text" }
+          ]
+        }
+      ]
+    }
+  ]
+}

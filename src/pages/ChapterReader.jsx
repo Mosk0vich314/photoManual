@@ -4,6 +4,7 @@ import { chapterBySlug, THEORY, APPENDICES } from '../data/index.js'
 import Blocks from '../components/Blocks.jsx'
 import HueWheel from '../components/HueWheel.jsx'
 import ToneCurve from '../components/ToneCurve.jsx'
+import CurvePlayground from '../components/CurvePlayground.jsx'
 import {
   Histogram, ShutterScale, ExposureTriangle, ThresholdDemo, SkyRecovery,
   HarmonyWheels, SkinToneBand, RuleOfThirds, GoldenSpiral, HeadroomLookroom, PhoneUI,
@@ -30,6 +31,7 @@ const CHAPTER_WIDGETS = {
   },
   'il-cielo-e-il-recupero': { 'In post: il cielo recuperabile': <SkyRecovery /> },
   'teoria-del-colore': { 'La ruota e i gradi': <HueWheel />, 'Le armonie': <HarmonyWheels /> },
+  'le-curve-di-colore': { 'Il banco di prova': <CurvePlayground /> },
   'teoria-dell-inquadratura': {
     'La Regola dei Terzi': <RuleOfThirds />,
     'La Sezione Aurea e la Spirale': <GoldenSpiral />,

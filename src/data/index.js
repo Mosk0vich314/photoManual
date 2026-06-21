@@ -1,9 +1,20 @@
 import manual from './manual.json'
 import meta from './styleMeta.json'
 import filmProfiles from './filmProfiles.json'
+import extraChapters from './extraChapters.json'
 
 export const META = manual.meta
-export const CHAPTERS = manual.chapters
+
+// Hand-authored chapters that aren't in the source PDF (e.g. the RGB-curves
+// lesson) — merged in at a chosen position so they read inline with the manual.
+// `insertAfter` is the slug the chapter should follow; otherwise it's appended.
+const mergedChapters = [...manual.chapters]
+for (const ch of extraChapters.chapters) {
+  const at = ch.insertAfter ? mergedChapters.findIndex((c) => c.slug === ch.insertAfter) : -1
+  if (at >= 0) mergedChapters.splice(at + 1, 0, ch)
+  else mergedChapters.push(ch)
+}
+export const CHAPTERS = mergedChapters
 
 // Film profiles ("Profili Film") — Lightroom *profiles*, distinct from the 24 looks
 export const PROFILES_META = filmProfiles.meta

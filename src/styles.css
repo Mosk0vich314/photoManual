@@ -218,6 +218,33 @@ h1.page { overflow-wrap: anywhere; }
 .dl-btn b { display: block; font-size: 15px; font-weight: 600; }
 .dl-btn small { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 1px; }
 
+/* ---------- interactive curve playground ---------- */
+.curve-lab { margin: 10px 0 22px; }
+.curve-lab .cv-canvas {
+  width: 100%; height: auto; display: block; border-radius: 12px;
+  border: 1px solid var(--line); background: #000; image-rendering: auto;
+}
+.curve-tabs { display: flex; gap: 8px; margin: 14px 0 10px; }
+.curve-tabs .tab {
+  flex: 1; font: inherit; font-weight: 600; font-size: 13px; padding: 7px 0;
+  border-radius: 9px; border: 1px solid var(--line); background: var(--bg-2);
+  color: var(--text-3); cursor: pointer; transition: .15s;
+}
+.curve-tabs .tab.on { background: var(--bg); }
+.curve-svg {
+  width: 100%; max-width: 290px; height: auto; display: block; margin: 4px auto 0;
+  touch-action: none; user-select: none; -webkit-user-select: none;
+}
+.curve-svg circle { touch-action: none; }
+.curve-presets { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 12px 0 4px; }
+.curve-presets .pbtn {
+  font: inherit; font-size: 12.5px; padding: 6px 13px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--bg-2); color: var(--text-2);
+  cursor: pointer; transition: .15s;
+}
+.curve-presets .pbtn:active { transform: scale(.96); }
+.curve-hint { font-size: 12px; line-height: 1.5; color: var(--text-3); text-align: center; margin: 8px 0 0; }
+
 /* ---------- Procedural cinematic poster ---------- */
 .poster { position: relative; overflow: hidden; isolation: isolate; }
 .poster > .poster-img,
